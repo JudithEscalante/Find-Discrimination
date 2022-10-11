@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Parallel Set Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://use.fontawesome.com/a54368f74e.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+  </head>
+
+  <body>
+    <fi>
+      <h5 class="center light  file-title">Find Discrimination</h5>
+    </fi>
+    
+    <div class="container" id="container">
+      
+      <div class="row">
+        <div class="sidebar col s2 left-align">
+          <div class="row">
+            <div class="section col s12 left-align">
+              <h5 id="models" class="left light file-name"></h5>
+            </div>
+            <div id="sidebar_options_model"  class="col s12 left-align">
+          </div>
+          </div>
+        
+          <div class="row">
+            <div class="section col s12 left-align">
+              <h5 id="features" class="left light file-name"></h5>
+            </div>
+            <div id="sidebar_options" class="col s12 left-align">
+            </div>
+          </div>
+        </div>
+       
+        <div class="content col s10 left-align">
+        <div id="parallel_set_container">
+          <div class="section">
+            <h5 id="file_name" class="left light file-name"></h5>
+          </div>
+          <div id="parallel_set_content" class="parallel-content"></div>
+          
+          
+        </div>
+        <div id="ribbon_path"></div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div id="upload_placeholder" class="center">
+      <a id="upload_csv">
+        <i class="material-icons x-large-icon  cloud-icon-margin cursor-pointer icon-color fade">cloud_upload</i>
+      </a>
+    </div>
+    <div id="loader_section" class="animate-loader start-hidden center">
+      <i class="fa fa-flask x-large-icon cloud-icon-margin cursor-pointer" aria-hidden="true"></i>
+    </div>
+
+    <!--Button visualization
+    <div class="fixed-action-btn">
+       <a class="btn-floating btn-large green">
+        <i class="large material-icons">add</i>
+      </a>
+      <ul>
+        <li><a id="open_faq" class="btn-floating blue modal-trigger"  href="#modal1">V1</a></li>
+        <li><a id="open_faq" class="btn-floating green modal-trigger"  href="#modal2">V2</a></li>
+      </ul>
+    </div>-->
+    
+    <div class="fixed-action-btn1"> 
+      <div class="row"> 
+      <div id="button1" class= "col s4"></div>
+      <div id="button2" class= "col s4"></div>
+      <div id="button3" class= "col s4"></div>
+      </div>
+    </div>
+    
+    <!--<div id="button2"></div>
+    <div id="button3"></div>-->
+
+    <!--Upload file-->
+    <input id="upload_input" type="file" accept=".csv,.json" style="visibility:hidden" />
+    <!--Modal 1-->
+    <div id="modal1" class="modal" >
+      <div class="modal-header">
+        <div class="row"> 
+        <div class="col s4 left-align"> <h5>General view</h5> </div>
+        <div class=" col s8 right-align" id="ribbon_pathV1"></div>
+      </div>
+      <div class="divider"></div>
+      </div>
+      <div id="modal1-content" class="modal-content">
+        <div class="row"> 
+          <div  id="clustered_bar" class="clustered-bar-content"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+    <!--Modal 2-->
+    <div id="modal2" class="modal">
+      <div class="modal-header">
+        <div class="row"> 
+        <div class="col s4 left-align"> <h5>Specific view</h5> </div>
+        <div class=" col s8 right-align" id="ribbon_pathV2"></div>
+      </div>
+      <div class="divider"></div>
+      </div>
+      <div class="modal-content">
+        <div class="row"> 
+          <div  id="comparison" class=" col s2 left-align"></div>
+          <!--<div class=" col s4 left-align">
+            <div id="selectButton"></div>
+            <div id="optionProtected"></div>
+          </div>-->
+        </div>
+
+        <div class="row"> 
+          <div  id="donut_chart" class=" col s6 center-align"></div>
+          <div  id="model_bar" class=" col s6 center-align"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+  
+    <script src="bundle.js"></script>
+  </body>
+
+ 
+</html>
