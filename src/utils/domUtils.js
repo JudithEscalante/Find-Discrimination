@@ -30,5 +30,7 @@ export const elementsProvider = {
   MODAL1: '#modal1',
   BUTTON1: '#button1',
   BUTTON2: '#button2',
-  BUTTON3: '#button3'
+  BUTTON3: '#button3',
+  SPECIFICVIEW: '#SpecificView',
+  PRECISION: '#precision'
 }

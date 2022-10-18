@@ -155,7 +155,7 @@ const renderDonutChart = (selector, dataset) => {
     var numElement = 1
     for (var i = 0; i < multiLevelData.length; i++) {
        var _cData = multiLevelData[i];
-       console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", _cData)
+
        drawPieChart(tooldiv, _cData, i, svg, pieWidth, colorStart[i], colorEnd[i], feature_, numElement, oppositeFeature,radiusDonut);
        numElement+=1
     }
@@ -333,7 +333,9 @@ const dataModel = (dataset, model) => {
     
 }
 
-const oppositeValuefunction = (value) =>{
+
+
+  const oppositeValuefunction = (value) =>{
     if(value === 'TP'){
       return 'FN'
     }
@@ -341,15 +343,16 @@ const oppositeValuefunction = (value) =>{
       if(value === 'FN')
          return 'TP'
       else{
-       if(value === 'FN')
+       if(value === 'FP')
           return 'TN'
        else{
          if(value === 'TN')
-           return 'FN'
+           return 'FP'
        }
       }
     }
   }
+
 
 const dataCategory = (dataset, category) => {
     const comparisonValue = getComparison()

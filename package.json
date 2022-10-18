@@ -3,16 +3,11 @@
   "version": "1.0.0",
   "description": "Customizable dimensions based on dataset for Parallel Sets ",
   "main": "index.js",
-  "engines": {
-    "node": "16.13.0",
-    "npm": "8.1.3"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --content-base docs/",
     "build": "webpack --optimize-minimize --optimize-occurrence-order"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/peaonunes/customizable-parallel-sets.git"

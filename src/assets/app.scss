@@ -53,10 +53,11 @@ fi {
 td, th {
   padding: 5px 0px;
   display: table-cell;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
   border-radius: 2px;
 }
+
 
 
 @media only screen and (min-width: 601px) {
@@ -221,6 +222,7 @@ td, th {
 
 .ribbon_pathV2 {
   font-size: 11px;
+  
 }
 
 .buttonA {

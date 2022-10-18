@@ -151,11 +151,11 @@ const  getdimensionClever = (allDimensions, dimensionsToFilter) => {
 }
 
 
-
-
 const getDimensions = (dataset) => {
   const allDimensions_ = getEntryFeaturesEspecial(dataset)
-  const allDimensions = getFeatureProtected(allDimensions_)
+  const modelName = getModelName()
+  const allDimensions_1 = getFeatureProtected(allDimensions_, modelName)
+  const allDimensions = allDimensions_1[0]
   const dimensionsToFilter = viewState.get('featuresFilter')
   
   return getdimensionClever(allDimensions, dimensionsToFilter) 
@@ -187,17 +187,52 @@ const getEntryFeaturesEspecial = (dataset) => {
   return featuresEspecial
 }
 
-
-const getFeatureProtected = (featuresEspecial) => {
+const getFeatureProtected = (featuresEspecial, modelName) => {
  
   var data1 = ['NameClassification', 'age', 'workclass', 'education', 'marital-status', 'race', 'sex', 'hours-per-week', 'country', 'Models']
   
   if (data1.length == compareFeature(featuresEspecial,data1)){
-     var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
-     return protectedAttribute
+    if(modelName == 'Agglomerative-Clustering' || modelName == undefined){
+      var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+      var causalDiscovery = {'sex':0.74, 'age':0.63, 'workclass': 0.86}
+      return [protectedAttribute, causalDiscovery]
+    }
+    else{
+      if(modelName == 'Decision-Tree'){
+        var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+        var causalDiscovery = {'sex':0.64, 'age':0.73, 'workclass': 0.83}
+        return [protectedAttribute, causalDiscovery]
+      }
+      else{
+        if(modelName == 'Gaussian-Naive-Bayes'){
+          var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+          var causalDiscovery = {'sex':0.54, 'age':0.75, 'workclass': 0.91}
+          return [protectedAttribute, causalDiscovery]
+        }
+        else{
+          if(modelName == 'Kmeans'){
+            var protectedAttribute = ['NameClassification','sex','workclass']
+            var causalDiscovery = {'sex':0.64, 'workclass': 0.83}
+            return [protectedAttribute, causalDiscovery]
+          }
+          else{
+            if(modelName == 'KNN'){
+              var protectedAttribute = ['NameClassification','sex', 'age', 'workclass', 'hours-per-week']
+              var causalDiscovery = {'sex':0.68, 'age':0.78, 'workclass': 0.82, 'hours-per-week': 0.53}
+              return [protectedAttribute, causalDiscovery]
+            }
+            else{
+              var protectedAttribute = ['NameClassification','sex', 'age', 'workclass', 'education']
+              var causalDiscovery = {'sex':0.76, 'age':0.89, 'workclass': 0.91, 'education': 0.51}
+              return [protectedAttribute, causalDiscovery]
+            }
+          }
+        }
+      }
+    }
+     
   }
 }
-
 
 
 const compareFeature = (features, data) =>{
@@ -216,4 +251,10 @@ const compareFeature = (features, data) =>{
 const  getdimensionClever2 = (discriminationAttribute, dimensionsToFilter) => { 
   return  discriminationAttribute.filter((dimension) => dimensionsToFilter.includes(dimension))
 
+}
+
+const getModelName = () =>{
+  const modelName = viewState.get('modelFilter')
+  const modelNameiterator = modelName.values()
+  return modelNameiterator.next().value
 }

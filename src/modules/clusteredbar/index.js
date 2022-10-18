@@ -25,12 +25,16 @@ export default () => {
 }
 
 const render = () => {
+    const dataset = viewState.get('dataset')
     const modelNameValue = getModelName()
-    renderClusteredBar(elementsProvider.CLUSTERED_BAR, modelNameValue)
+    const feature = getEntryFeaturesEspecial(dataset)
+    const featureProtected = getFeatureProtected(feature, modelNameValue)
+    renderClusteredBar(elementsProvider.CLUSTERED_BAR, modelNameValue, featureProtected)
     
 }
 
-const renderClusteredBar = (selector,modelNameValue) => {
+
+const renderClusteredBar = (selector,modelNameValue, featureProtected) => {
     
     var models_ = getmodel()
     var models = transformToSet(models_)
@@ -105,7 +109,9 @@ const renderClusteredBar = (selector,modelNameValue) => {
 
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'Agglomerative-Clustering' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'Agglomerative-Clustering' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model1)
+            .html(function() {return modelNameValue == 'Agglomerative-Clustering' ? "<b>"+ " Model: " + "</b>" + 'Agglomerative-Clustering' + "<br>" + "<b>"+ "Classification: " + "</b>" +  
+            d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model1 + "<br>"+ "<b>"+ "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected): "<b>"+ " Model: " + "</b>" + 'Agglomerative-Clustering' + "<br>" + "<b>"+ "Classification: " + "</b>" +  
+            d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model1;})
     d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8)
   })
   .on("mousemove",(d) =>{
@@ -203,7 +209,10 @@ section.selectAll(".bar.model2")
     var activeBar = window.activeBar = elements[l];
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'Decision-Tree' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'Decision-Tree' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model2)
+            .html(function() {return modelNameValue == 'Decision-Tree' ?"<b>"+ " Model: " + "</b>" + 'Decision-Tree' + "<br>" + 
+            "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model2 + "<br>"+ "<b>"+ 
+            "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected): "<b>"+ " Model: " + "</b>" + 'Decision-Tree' + "<br>" + 
+            "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model2;})
     d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8)  
   })
   .on("mousemove",() =>{
@@ -294,7 +303,10 @@ section.selectAll(".bar.model3")
     var activeBar = window.activeBar = elements[l];
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'Gaussian-Naive-Bayes' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'Gaussian-Naive-Bayes' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model3)
+            .html(function() {return modelNameValue == 'Gaussian-Naive-Bayes' ? "<b>"+ " Model: " + "</b>" + 'Gaussian-Naive-Bayes' + "<br>" + "<b>"+ "Classification: " + "</b>" +  
+            d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model3 + "<br>"+ "<b>"+ 
+            "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected) :"<b>"+ " Model: " + "</b>" + 'Gaussian-Naive-Bayes' + "<br>" + "<b>"+ "Classification: " + "</b>" +  
+            d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model3})
            d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8) 
   })
   .on("mousemove",() =>{
@@ -386,7 +398,10 @@ section.selectAll(".bar.model3")
     var activeBar = window.activeBar = elements[l];
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'Kmeans' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'Kmeans' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model4)
+            .html(function() {return modelNameValue == 'Kmeans'? "<b>"+ " Model: " + "</b>" + 'Kmeans' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + 
+            "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model4 + "<br>"+ "<b>"+ 
+            "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected) :"<b>"+ " Model: " + "</b>" + 'Kmeans' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + 
+            "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model4})
            
             d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8) 
   })
@@ -480,7 +495,10 @@ section.selectAll(".bar.model3")
     var activeBar = window.activeBar = elements[l];
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'KNN' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'KNN' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model5)
+            .html(function() {return modelNameValue == 'KNN'? "<b>"+ " Model: " + "</b>" + 'KNN' + "<br>" + "<b>"+ 
+            "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model5 + "<br>"+ "<b>"+ 
+            "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected) :"<b>"+ " Model: " + "</b>" + 'KNN' + "<br>" + "<b>"+ 
+            "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model5})
     d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8)  
   })
   .on("mousemove",() =>{
@@ -573,7 +591,10 @@ section.selectAll(".bar.model3")
     var activeBar = window.activeBar = elements[l];
     tooldiv.style('visibility','visible')
             .style('background-color', function() {return modelNameValue == 'SVM' ? "#26a69a" : "#fff";})
-            .html("<b>"+ " Model: " + "</b>" + 'SVM' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model6)
+            .html(function() {return modelNameValue == 'SVM'? "<b>"+ " Model: " + "</b>" + 'SVM' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + 
+            "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model6 + "<br>"+ "<b>"+ 
+            "Causal Discovery: " + "<b>"+ causalDiscovery(featureProtected) :"<b>"+ " Model: " + "</b>" + 'SVM' + "<br>" + "<b>"+ "Classification: " + "</b>" +  d.section + 
+            "<br>" + "<b>"+ "Quantity: " + "<b>"+ d.model6})
             d3.select(activeBar).attr("stroke","black").attr("stroke-width",1.8)  
   })
   .on("mousemove",() =>{
@@ -648,6 +669,78 @@ svg.append("g")
    .attr("class", "axis x_axis")
    .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
    .call(xAxis)
+
+information(models, modelNameValue)
+
+
+}
+
+const information = (models, modelNameValue) => {
+  const precision = d3.select(elementsProvider.PRECISION)
+  
+  if(modelNameValue=='Agglomerative-Clustering'){
+    //precision.text("Precision: " + models[0].model1/ (models[0].model1 + models[1].model1) 
+                    //+ ", Accuracy: " + (models[0].model1 + models[3].model1)/ (models[0].model1 + models[3].model1 + models[1].model1 + models[2].model1)
+                    //+ ", Specificity: " + models[3].model1/(models[3].model1 + models[1].model1)
+                    //+ ", Sensitivity: " + models[0].model1/(models[0].model1 + models[2].model1))
+    precision.html("<span style=color:#26a69a>" +"<b>" + "Precision: " + "</b>" + models[0].model1/ (models[0].model1 + models[1].model1) 
+    + "<b>"  + ", Accuracy: " + "</b>" + (models[0].model1 + models[3].model1)/ (models[0].model1 + models[3].model1 + models[1].model1 + models[2].model1)
+    + "<b>"  + ", Specificity: " + "</b>" + models[3].model1/(models[3].model1 + models[1].model1)
+    + "<b>"  + ", Sensitivity: " + "</b>" + models[0].model1/(models[0].model1 + models[2].model1) + "</span>")
+  }
+  else{
+    if(modelNameValue=='Decision-Tree'){
+      precision.text("Precision: " + models[0].model2/ (models[0].model2 + models[1].model2) 
+                    + ", Accuracy: " + (models[0].model2 + models[3].model2)/ (models[0].model2 + models[3].model2 + 
+                                        models[1].model2 + models[2].model2)
+                    + ", Specificity: " + models[3].model2/(models[3].model2 + models[1].model2)
+                    + ", Sensitivity: " + models[0].model2/(models[0].model2 + models[2].model2))
+
+    }
+    else{
+      if(modelNameValue=='Gaussian-Naive-Bayes'){
+        precision.text("Precision: " + models[0].model3/ (models[0].model3 + models[1].model3) 
+        + ", Accuracy: " + (models[0].model3 + models[3].model3)/ (models[0].model3 + models[3].model3 + 
+                            models[1].model3 + models[2].model3)
+        + ", Specificity: " + models[3].model3/(models[3].model3 + models[1].model3)
+        + ", Sensitivity: " + models[0].model3/(models[0].model3 + models[2].model3))
+      }
+      else{
+        if(modelNameValue=='Kmeans'){
+          precision.text("Precision: " + models[0].model4/ (models[0].model4 + models[1].model4) 
+          + ", Accuracy: " + (models[0].model4 + models[3].model4)/ (models[0].model4 + models[3].model4 + 
+                              models[1].model4 + models[2].model4)
+          + ", Specificity: " + models[3].model4/(models[3].model4 + models[1].model4)
+          + ", Sensitivity: " + models[0].model4/(models[0].model4 + models[2].model4))
+        }
+        else{
+          if(modelNameValue=='KNN'){
+            precision.text("Precision: " + models[0].model5/ (models[0].model5 + models[1].model5) 
+            + ", Accuracy: " + (models[0].model5 + models[3].model5)/ (models[0].model5 + models[3].model5 + 
+                                models[1].model5 + models[2].model5)
+            + ", Specificity: " + models[3].model5/(models[3].model5 + models[1].model5)
+            + ", Sensitivity: " + models[0].model5/(models[0].model5 + models[2].model5))
+          }
+          else{
+            precision.text("Precision: " + models[0].model6/ (models[0].model6 + models[1].model6) 
+            + ", Accuracy: " + (models[0].model6 + models[3].model6)/ (models[0].model6 + models[3].model6 + 
+                                models[1].model6 + models[2].model6)
+            + ", Specificity: " + models[3].model6/(models[3].model6 + models[1].model6)
+            + ", Sensitivity: " + models[0].model6/(models[0].model6 + models[2].model6))
+          }
+        }
+      }
+    }
+  }
+}
+
+const causalDiscovery = (list) => {
+  const causal = []
+  for (var i = 1; i < list[0].length; i++){
+     causal.push(list[0][i])
+  }
+  
+  return causal.join(" → ")
 }
 
 const getmodel = () => {
@@ -1011,6 +1104,69 @@ const getModelName = () =>{
 
 
 
+const getFeatureProtected = (featuresEspecial, modelName) => {
+ 
+  var data1 = ['NameClassification', 'age', 'workclass', 'education', 'marital-status', 'race', 'sex', 'hours-per-week', 'country', 'Models']
+  
+  if (data1.length == compareFeature(featuresEspecial,data1)){
+    if(modelName == 'Agglomerative-Clustering' || modelName == undefined){
+      var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+      var causalDiscovery = {'sex':0.74, 'age':0.63, 'workclass': 0.86}
+      return [protectedAttribute, causalDiscovery]
+    }
+    else{
+      if(modelName == 'Decision-Tree'){
+        var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+        var causalDiscovery = {'sex':0.64, 'age':0.73, 'workclass': 0.83}
+        return [protectedAttribute, causalDiscovery]
+      }
+      else{
+        if(modelName == 'Gaussian-Naive-Bayes'){
+          var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
+          var causalDiscovery = {'sex':0.54, 'age':0.75, 'workclass': 0.91}
+          return [protectedAttribute, causalDiscovery]
+        }
+        else{
+          if(modelName == 'Kmeans'){
+            var protectedAttribute = ['NameClassification','sex','workclass']
+            var causalDiscovery = {'sex':0.64, 'workclass': 0.83}
+            return [protectedAttribute, causalDiscovery]
+          }
+          else{
+            if(modelName == 'KNN'){
+              var protectedAttribute = ['NameClassification','sex', 'age', 'workclass', 'hours-per-week']
+              var causalDiscovery = {'sex':0.68, 'age':0.78, 'workclass': 0.82, 'hours-per-week': 0.53}
+              return [protectedAttribute, causalDiscovery]
+            }
+            else{
+              var protectedAttribute = ['NameClassification','sex', 'age', 'workclass', 'education']
+              var causalDiscovery = {'sex':0.76, 'age':0.89, 'workclass': 0.91, 'education': 0.51}
+              return [protectedAttribute, causalDiscovery]
+            }
+          }
+        }
+      }
+    }
+     
+  }
+}
+
+const getEntryFeaturesEspecial = (dataset) => {
+  var featuresEspecial = Object.keys(dataset.get(0))
+  return featuresEspecial
+}
+
+const compareFeature = (features, data) =>{
+  var size = 0
+  for (var a = 0; a < features.length; a++){
+    for (var b = 0; b < data.length; b++){
+      if(features[a] == data[b]){
+           size+=1
+      }
+    }
+  }
+  return size
+}
 
 
 

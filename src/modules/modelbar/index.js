@@ -537,6 +537,8 @@ const getComparison = ()=>{
 }
 
 
+
+
 const oppositeValue = (value) =>{
   if(value === 'TP'){
     return 'FN'
@@ -545,11 +547,11 @@ const oppositeValue = (value) =>{
     if(value === 'FN')
        return 'TP'
     else{
-     if(value === 'FN')
+     if(value === 'FP')
         return 'TN'
      else{
        if(value === 'TN')
-         return 'FN'
+         return 'FP'
      }
     }
   }
