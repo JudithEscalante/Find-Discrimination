@@ -3,7 +3,7 @@ const express = require('express');
 const path = require ('path');
 
 
-const port =  process.env.port ;
+const port =  process.env.port || 8080 ;
 const host = '0.0.0.0'  
 const app = express();
 
@@ -11,11 +11,11 @@ const app = express();
 app.use(express.static(__dirname))
 
 app.get('*', (req, res) => {
-    //if (req.path.endsWith('bundle.js')) {
+if (req.path.endsWith('bundle.js')) {
         res.sendFile(path.resolve(__dirname, './docs/bundle.js'));
-    //} else {
+    } else {
         res.sendFile(path.resolve(__dirname, './docs/index.html'));
-    //}
+    }
 
 });
 
