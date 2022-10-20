@@ -13,8 +13,8 @@ module.exports = {
 
   output: {
     //path.join(__dirname, 'docs')
-    path: path.join(__dirname, 'docs'),
-    publicPath: path.join(__dirname, 'docs'),
+    path: path.join(__dirname, './docs/index.html'),
+    publicPath: path.join(__dirname, './docs/index.html'),
     filename: 'bundle.js',
   },
 
