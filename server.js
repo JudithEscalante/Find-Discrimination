@@ -3,10 +3,9 @@ const express = require('express');
 const path = require ('path');
 
 
-const port =  process.env.PORT || 8080;
+const port =  process.env.port || 8080;
+const host = '0.0.0.0'
 const app = express();
-
-
 
 
 app.use(express.static(__dirname))
@@ -17,12 +16,11 @@ app.get('*', (req, res) => {
     } else {
         res.sendFile(path.resolve(__dirname, './docs/index.html'));
     }
-    
-    //res.sendFile(path.resolve(__dirname, './docs/index.html'));
-    
 
-  
 });
 
-app.listen(port);
+app.listen(port, host);
 console.log('Server started');
+
+
+

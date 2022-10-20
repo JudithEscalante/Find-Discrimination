@@ -74,9 +74,9 @@ const renderLabels = (options, discriminationAttribute, protectedAttribute, caus
   
   options
     .append("label")
-      .attr("class", "tooltipped")
-      .attr("data-position", "right")
-      .attr("data-delay", 50)
+      //.attr("class", "tooltipped")
+      //.attr("data-position", "right")
+      //.attr("data-delay", 50)
       .style("color", function(d) {return color(d, discriminationAttribute) ? "#26a69a" : "#9e9e9e";})
       .attr("data-tooltip", (d) => d)
       .attr("for", (d) => d)
