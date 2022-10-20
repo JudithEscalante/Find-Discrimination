@@ -3,8 +3,8 @@ const express = require('express');
 const path = require ('path');
 
 
-const port =  process.env.port;
-const host = '0.0.0.0'
+const port =  process.env.port ;
+//const host = '0.0.0.0'  
 const app = express();
 
 
@@ -19,7 +19,7 @@ app.get('*', (req, res) => {
 
 });
 
-app.listen(port, host);
+app.listen(port);
 console.log('Server started');
 
 
