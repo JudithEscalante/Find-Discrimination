@@ -53,6 +53,7 @@
     "d3-dsv": "^1.0.7",
     "immutable": "^3.8.2",
     "redux": "^3.7.2",
+    "express":"*",
     "reselect": "^2.5.4",
     "source-map-loader": "^0.1.5"
   }
