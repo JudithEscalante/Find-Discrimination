@@ -15,10 +15,7 @@
     "start": "node sever.js"
   },
   
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/peaonunes/customizable-parallel-sets.git"
-  },
+  
   "keywords": [
     "parallel",
     "set",
