@@ -190,7 +190,7 @@ const getEntryFeaturesEspecial = (dataset) => {
 const getFeatureProtected = (featuresEspecial, modelName) => {
  
   var data1 = ['NameClassification', 'age', 'workclass', 'education', 'marital-status', 'race', 'sex', 'hours-per-week', 'country', 'Models']
-  
+  var data2 = ['NameClassification', 'Relation', 'StageID', 'AbsenceDays', 'gender', 'Semester', 'raisedhands', 'Discussion', 'VisitedResources', 'AcademicAView', 'Models']
   if (data1.length == compareFeature(featuresEspecial,data1)){
     if(modelName == 'Agglomerative-Clustering' || modelName == undefined){
       var protectedAttribute = ['NameClassification','sex', 'age', 'workclass']
@@ -232,6 +232,52 @@ const getFeatureProtected = (featuresEspecial, modelName) => {
     }
      
   }
+  else{
+    if (data2.length == compareFeature(featuresEspecial,data2)){
+      if(modelName == 'Agglomerative-Clustering' || modelName == undefined){
+        var protectedAttribute = ['NameClassification','gender', 'Discussion', 'raisedhands']
+        var causalDiscovery = {'gender':0.84, 'Discussion':0.53, 'raisedhands': 0.76}
+        return [protectedAttribute, causalDiscovery]
+      }
+      else{
+        if(modelName == 'Decision-Tree'){
+          var protectedAttribute = ['NameClassification','gender', 'VisitedResources', 'AcademicAView', 'raisedhands']
+        var causalDiscovery = {'gender':0.72, 'VisitedResources':0.73, 'AcademicAView':0.68, 'raisedhands': 0.86}
+        return [protectedAttribute, causalDiscovery]
+        }
+        else{
+          if(modelName == 'Gaussian-Naive-Bayes'){
+            var protectedAttribute = ['NameClassification','gender', 'VisitedResources', 'AcademicAView', 'raisedhands']
+        var causalDiscovery = {'gender':0.72, 'VisitedResources':0.63, 'AcademicAView':0.88, 'raisedhands': 0.76}
+        return [protectedAttribute, causalDiscovery]
+          }
+          else{
+            if(modelName == 'Kmeans'){
+              var protectedAttribute = ['NameClassification','gender', 'raisedhands', 'AcademicAView']
+        var causalDiscovery = {'gender':0.72, 'raisedhands': 0.76, 'AcademicAView': 0.74}
+        return [protectedAttribute, causalDiscovery]
+            }
+            else{
+              if(modelName == 'KNN'){
+                var protectedAttribute = ['NameClassification','gender', 'raisedhands', 'AcademicAView']
+                var causalDiscovery = {'gender':0.62, 'raisedhands': 0.86, 'AcademicAView': 0.94}
+        return [protectedAttribute, causalDiscovery]
+              }
+              else{
+                var protectedAttribute = ['NameClassification','gender', 'raisedhands', 'AcademicAView']
+                var causalDiscovery = {'gender':0.72, 'raisedhands': 0.57, 'AcademicAView': 0.89}
+        return [protectedAttribute, causalDiscovery]
+              }
+            }
+          }
+        }
+      }
+    }else{
+      return [[],[]]
+    }
+    
+  }
+  
 }
 
 

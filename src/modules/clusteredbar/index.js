@@ -683,50 +683,77 @@ const information = (models, modelNameValue) => {
                     //+ ", Accuracy: " + (models[0].model1 + models[3].model1)/ (models[0].model1 + models[3].model1 + models[1].model1 + models[2].model1)
                     //+ ", Specificity: " + models[3].model1/(models[3].model1 + models[1].model1)
                     //+ ", Sensitivity: " + models[0].model1/(models[0].model1 + models[2].model1))
-    precision.html("<span style=color:#26a69a>" +"<b>" + "Precision: " + "</b>" + models[0].model1/ (models[0].model1 + models[1].model1) 
-    + "<b>"  + ", Accuracy: " + "</b>" + (models[0].model1 + models[3].model1)/ (models[0].model1 + models[3].model1 + models[1].model1 + models[2].model1)
-    + "<b>"  + ", Specificity: " + "</b>" + models[3].model1/(models[3].model1 + models[1].model1)
-    + "<b>"  + ", Sensitivity: " + "</b>" + models[0].model1/(models[0].model1 + models[2].model1) + "</span>")
+    var precision_ = models[0].model1/ (models[0].model1 + models[1].model1)
+    var accuracy = (models[0].model1 + models[3].model1)/ (models[0].model1 + models[3].model1 + models[1].model1 + models[2].model1)
+    var Specificity = models[3].model1/(models[3].model1 + models[1].model1)
+    var Sensitivity = models[0].model1/(models[0].model1 + models[2].model1)
+    precision.html("<span style=color:#26a69a>" + "<b>" + "Agglomerative-Clustering ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+    + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+    + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+    + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
   }
   else{
     if(modelNameValue=='Decision-Tree'){
-      precision.text("Precision: " + models[0].model2/ (models[0].model2 + models[1].model2) 
-                    + ", Accuracy: " + (models[0].model2 + models[3].model2)/ (models[0].model2 + models[3].model2 + 
-                                        models[1].model2 + models[2].model2)
-                    + ", Specificity: " + models[3].model2/(models[3].model2 + models[1].model2)
-                    + ", Sensitivity: " + models[0].model2/(models[0].model2 + models[2].model2))
+      var precision_ = models[0].model2/ (models[0].model2 + models[1].model2) 
+      var accuracy = (models[0].model2 + models[3].model2)/ (models[0].model2 + models[3].model2 + models[1].model2 + models[2].model2)
+      var Specificity = models[3].model2/(models[3].model2 + models[1].model2)
+      var Sensitivity = models[0].model2/(models[0].model2 + models[2].model2)
+
+      precision.html("<span style=color:#26a69a>" + "<b>" + "Decision-Tree ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+    + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+    + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+    + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
 
     }
     else{
       if(modelNameValue=='Gaussian-Naive-Bayes'){
-        precision.text("Precision: " + models[0].model3/ (models[0].model3 + models[1].model3) 
-        + ", Accuracy: " + (models[0].model3 + models[3].model3)/ (models[0].model3 + models[3].model3 + 
-                            models[1].model3 + models[2].model3)
-        + ", Specificity: " + models[3].model3/(models[3].model3 + models[1].model3)
-        + ", Sensitivity: " + models[0].model3/(models[0].model3 + models[2].model3))
+        var precision_ = models[0].model3/ (models[0].model3 + models[1].model3)
+        var accuracy = (models[0].model3 + models[3].model3)/ (models[0].model3 + models[3].model3 + models[1].model3 + models[2].model3)
+        var Specificity = models[3].model3/(models[3].model3 + models[1].model3)
+        var Sensitivity = models[0].model3/(models[0].model3 + models[2].model3)
+
+        precision.html("<span style=color:#26a69a>" + "<b>" + "Gaussian-Naive-Bayes ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+        + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+        + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+        + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
+        
       }
       else{
         if(modelNameValue=='Kmeans'){
-          precision.text("Precision: " + models[0].model4/ (models[0].model4 + models[1].model4) 
-          + ", Accuracy: " + (models[0].model4 + models[3].model4)/ (models[0].model4 + models[3].model4 + 
-                              models[1].model4 + models[2].model4)
-          + ", Specificity: " + models[3].model4/(models[3].model4 + models[1].model4)
-          + ", Sensitivity: " + models[0].model4/(models[0].model4 + models[2].model4))
+          var precision_ = models[0].model4/ (models[0].model4 + models[1].model4)
+          var accuracy = (models[0].model4 + models[3].model4)/ (models[0].model4 + models[3].model4 + models[1].model4 + models[2].model4)
+          var Specificity = models[3].model4/(models[3].model4 + models[1].model4)
+          var Sensitivity = models[0].model4/(models[0].model4 + models[2].model4)
+          
+          precision.html("<span style=color:#26a69a>" + "<b>" + "Kmeans ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+        + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+        + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+        + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
+          
         }
         else{
           if(modelNameValue=='KNN'){
-            precision.text("Precision: " + models[0].model5/ (models[0].model5 + models[1].model5) 
-            + ", Accuracy: " + (models[0].model5 + models[3].model5)/ (models[0].model5 + models[3].model5 + 
-                                models[1].model5 + models[2].model5)
-            + ", Specificity: " + models[3].model5/(models[3].model5 + models[1].model5)
-            + ", Sensitivity: " + models[0].model5/(models[0].model5 + models[2].model5))
+            var precision_ = models[0].model5/ (models[0].model5 + models[1].model5)
+            var accuracy = (models[0].model5 + models[3].model5)/ (models[0].model5 + models[3].model5 + models[1].model5 + models[2].model5)
+            var Specificity = models[3].model5/(models[3].model5 + models[1].model5)
+            var Sensitivity = models[0].model5/(models[0].model5 + models[2].model5)
+            
+            precision.html("<span style=color:#26a69a>" + "<b>" + "KNN ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+        + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+        + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+        + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
+            
           }
           else{
-            precision.text("Precision: " + models[0].model6/ (models[0].model6 + models[1].model6) 
-            + ", Accuracy: " + (models[0].model6 + models[3].model6)/ (models[0].model6 + models[3].model6 + 
-                                models[1].model6 + models[2].model6)
-            + ", Specificity: " + models[3].model6/(models[3].model6 + models[1].model6)
-            + ", Sensitivity: " + models[0].model6/(models[0].model6 + models[2].model6))
+            var precision_ = models[0].model6/ (models[0].model6 + models[1].model6)
+            var accuracy = (models[0].model6 + models[3].model6)/ (models[0].model6 + models[3].model6 + models[1].model6 + models[2].model6)
+            var Specificity = models[3].model6/(models[3].model6 + models[1].model6)
+            var Sensitivity = models[0].model6/(models[0].model6 + models[2].model6)
+            precision.html("<span style=color:#26a69a>" + "<b>" + "SVM ---> " + "</b>" +"<b>" + "Precision: " + "</b>" + Number(precision_.toFixed(2))  
+            + "<b>"  + ", Accuracy: " + "</b>" + Number(accuracy.toFixed(2))
+            + "<b>"  + ", Specificity: " + "</b>" + Number(Specificity.toFixed(2))
+            + "<b>"  + ", Sensitivity: " + "</b>" + Number(Sensitivity.toFixed(2)) + "</span>")
+           
           }
         }
       }
@@ -1101,8 +1128,6 @@ const getModelName = () =>{
   const modelNameiterator = modelName.values()
   return modelNameiterator.next().value
 }
-
-
 
 const getFeatureProtected = (featuresEspecial, modelName) => {
  

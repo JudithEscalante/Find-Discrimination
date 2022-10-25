@@ -128,10 +128,14 @@ const getEntryFeatures = (dataset) => {
 const getFeatureProtected = (features) => {
  
   var data1 = ['NameClassification', 'age', 'workclass', 'education', 'marital-status', 'race', 'sex', 'hours-per-week', 'country', 'Models']
-  
+  var data2 = ['NameClassification', 'Relation', 'StageID', 'AbsenceDays', 'gender', 'Semester', 'raisedhands', 'Discussion', 'VisitedResources', 'AcademicAView', 'Models'] 
   if (data1.length == compareFeature(features,data1)){
      var protectedAttribute = ['sex', 'age', 'workclass']
      return protectedAttribute
+  }
+  else{
+    var protectedAttribute = ['gender', 'VisitedResources', 'AcademicAView', 'raisedhands']
+    return protectedAttribute
   }
 }
 
